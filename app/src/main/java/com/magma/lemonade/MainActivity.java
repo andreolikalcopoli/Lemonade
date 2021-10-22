@@ -13,6 +13,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.magma.lemonade.db.DatabaseWriter;
+import com.magma.lemonade.utils.PrefSingleton;
 import com.magma.lemonade.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,11 +24,14 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imgList, imgSell, imgProfit, imgLearn;
 
     private Utils utils;
+    private PrefSingleton prefSingleton;
+    private DatabaseWriter databaseWriter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         init();
     }
@@ -45,6 +50,41 @@ public class MainActivity extends AppCompatActivity {
                 utils.intent(ProductsActivity.class, null);
             }
         });
+
+        imgLearn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                utils.intent(RecipesActivity.class, null);
+            }
+        });
+
+        imgProfit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                utils.intent(ProfitActivity.class, null);
+            }
+        });
+
+        imgSell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startSelling();
+            }
+        });
+
+        btnSell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startSelling();
+            }
+        });
+    }
+
+    private void startSelling(){
+        if (!prefSingleton.getBool("stand"))
+            utils.intent(StartActivity.class, null);
+        else
+            utils.intent(SellingActivity.class, null);
     }
 
     private void setBanner() {
@@ -68,6 +108,11 @@ public class MainActivity extends AppCompatActivity {
         imgSell = (ImageView) findViewById(R.id.imgSelling);
 
         utils = new Utils(this);
+        PrefSingleton.getInstance().Initialize(this);
+        prefSingleton = PrefSingleton.getInstance();
+        databaseWriter = new DatabaseWriter();
+
+        if (prefSingleton.getString("id").length() < 1) databaseWriter.createUser();
 
         setBanner();
         setListeners();

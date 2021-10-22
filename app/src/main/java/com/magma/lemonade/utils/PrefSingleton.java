@@ -31,4 +31,14 @@ public class PrefSingleton {
     public String getString(String key){
         return mMyPreferences.getString(key,"");
     }
+
+    public void saveBool(String key, boolean value){
+        SharedPreferences.Editor e = mMyPreferences.edit();
+        e.putBoolean(key, value);
+        e.apply();
+    }
+
+    public boolean getBool(String key){
+        return mMyPreferences.getBoolean(key,false);
+    }
 }

@@ -15,6 +15,7 @@ public class PremiumActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_premium);
+        getSupportActionBar().hide();
 
         imgSub = (ImageView) findViewById(R.id.imgSub);
 

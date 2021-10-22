@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_12sdp"
+    tools:context=".SellingActivity">
+
+    <TextView
+        android:id="@+id/sellingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_20sdp"
+        android:text="SELLING"
+        android:fontFamily="@font/boldfutura"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/introSelling"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue_button"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:padding="@dimen/_8sdp"
+        app:layout_constraintTop_toBottomOf="@id/sellingTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/introTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="LEMONADE"
+            android:textSize="@dimen/_18sdp"
+            android:textAllCaps="true"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:fontFamily="@font/boldfutura"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/introPriceText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:fontFamily="@font/futura"
+            android:text="price"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/introTitle"
+            app:layout_constraintBottom_toTopOf="@id/introPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/introPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_22sdp"
+            android:fontFamily="@font/boldfutura"
+            android:text="$3.97!"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imgSubSelling"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:src="@drawable/submarine"
+        android:layout_marginBottom="@dimen/_minus12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/introSelling"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cashbox"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/blue_button"
+        android:padding="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_18sdp"
+        app:layout_constraintTop_toBottomOf="@id/introSelling"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/cboxTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VIRTUAL CASHBOX"
+            android:textSize="@dimen/_18sdp"
+            android:textAllCaps="true"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:fontFamily="@font/boldfutura"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/consCboxInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/cboxTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/tCurrency"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/boldfutura"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="$"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tLine"/>
+
+            <EditText
+                android:id="@+id/etCboxInput"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/white"
+                android:textColorHint="#BFFFFFFF"
+                android:background="@android:color/transparent"
+                android:hint="Type the amount received..."
+                android:inputType="numberDecimal"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/tCurrency"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tLine"/>
+
+            <TextView
+                android:id="@+id/tLine"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/_3sdp"
+                app:layout_constraintTop_toBottomOf="@id/tCurrency"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/btSellComplete"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/btsell"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/consCboxInput"
+            app:layout_constraintBottom_toTopOf="@id/btKeepChange"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tChange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            android:text="Change: $0"
+            app:layout_constraintTop_toTopOf="@id/btKeepChange"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <android.widget.Button
+            android:id="@+id/btKeepChange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keep the change!"
+            android:textColor="@color/secondaryColor"
+            android:textAllCaps="false"
+            android:padding="@dimen/_7sdp"
+            android:background="@drawable/white_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

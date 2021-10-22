@@ -11,7 +11,7 @@
         android:id="@+id/splashTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="APP NAME"
+        android:text="LEARN WITH LEMONADE"
         android:textSize="@dimen/_24sdp"
         android:layout_marginTop="@dimen/_24sdp"
         app:layout_constraintTop_toTopOf="parent"

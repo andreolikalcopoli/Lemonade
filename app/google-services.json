@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1091979665605",
+    "project_id": "lwl-learn-with-lemonade",
+    "storage_bucket": "lwl-learn-with-lemonade.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091979665605:android:8e9538e701c567ba2f10ac",
+        "android_client_info": {
+          "package_name": "com.magma.lemonade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091979665605-ea8sav0vk0tn4nrf70t8tcbc0t28f0vl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe5Sw9vhpZtkNJ6u3WvsfMUbF9Qey88dU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091979665605-ea8sav0vk0tn4nrf70t8tcbc0t28f0vl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
