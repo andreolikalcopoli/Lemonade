@@ -28,19 +28,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/introTitle"
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="LEMONADE"
-            android:textSize="@dimen/_18sdp"
-            android:textAllCaps="true"
-            android:maxLines="1"
-            android:textColor="@color/white"
-            android:fontFamily="@font/boldfutura"
-            app:layout_constraintTop_toTopOf="parent"
+            android:popupBackground="@color/secondaryColor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/introPriceText"
@@ -51,7 +47,7 @@
             android:fontFamily="@font/futura"
             android:text="price"
             android:layout_marginTop="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/introTitle"
+            app:layout_constraintTop_toBottomOf="@id/spinner"
             app:layout_constraintBottom_toTopOf="@id/introPrice"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -128,17 +124,32 @@
                 android:id="@+id/etCboxInput"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:textSize="@dimen/_14sdp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:hint="Type the money received..."
+                android:inputType="numberDecimal"
                 android:textColor="@color/white"
                 android:textColorHint="#BFFFFFFF"
-                android:background="@android:color/transparent"
-                android:hint="Type the amount received..."
-                android:inputType="numberDecimal"
-                android:gravity="center"
+                android:textSize="@dimen/_13sdp"
+                app:layout_constraintBottom_toTopOf="@id/tLine"
+                app:layout_constraintEnd_toStartOf="@+id/etAmount"
                 app:layout_constraintStart_toEndOf="@id/tCurrency"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etAmount"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="amount"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textColorHint="#80FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/tLine"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tLine"
@@ -157,13 +168,27 @@
             android:id="@+id/btSellComplete"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/btsell"
             android:layout_marginTop="@dimen/_12sdp"
-            android:layout_marginBottom="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/consCboxInput"
-            app:layout_constraintBottom_toTopOf="@id/btKeepChange"
+            android:src="@drawable/btsell"
+            android:layout_marginBottom="@dimen/_6sdp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintBottom_toTopOf="@id/btnHelp"
+            app:layout_constraintTop_toBottomOf="@id/consCboxInput" />
+
+        <android.widget.Button
+            android:id="@+id/btnHelp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_6sdp"
+            android:background="@drawable/white_button"
+            android:fontFamily="@font/boldfutura"
+            android:text="Need help with making change?"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/btKeepChange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tChange"
@@ -188,6 +213,65 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imgFlip"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/coinflip" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consChange"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#B3000000"
+        android:padding="@dimen/_12sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/consChangeContent"
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="@dimen/_250sdp"
+            android:background="@drawable/white_button"
+            android:padding="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recChange"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/btCloseChange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.widget.Button
+                android:id="@+id/btCloseChange"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_button"
+                android:fontFamily="@font/boldfutura"
+                android:text="Got it!"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

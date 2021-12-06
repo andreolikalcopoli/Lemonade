@@ -1,4 +1,4 @@
-package com.magma.lemonade.models;
+package com.magma.lemonade.utils;
 
 import android.util.Log;
 
@@ -15,14 +15,14 @@ public class DateTime {
     private String tag = "DATETIME";
 
     public String getCurrentDate(){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
         //simpleDateFormat.setTimeZone(TimeZone.getTimeZone("CEST"));
         return simpleDateFormat.format(Calendar.getInstance().getTime());
     }
 
     public int getDateDifference(String start1, Locale locale){
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
             Date start = simpleDateFormat.parse(start1);
             Date end = simpleDateFormat.parse(getCurrentDate());
 

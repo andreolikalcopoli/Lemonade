@@ -2,6 +2,7 @@ package com.magma.lemonade.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
+
+import java.io.IOException;
 
 public class Utils {
     private Context context;
@@ -40,5 +43,10 @@ public class Utils {
 
     public boolean isEmpty(EditText et){
         return et.getText().toString().trim().equals("");
+    }
+
+    public void playAudio(int audio) {
+        MediaPlayer mediaPlayer = MediaPlayer.create(context, audio);
+        mediaPlayer.start();
     }
 }

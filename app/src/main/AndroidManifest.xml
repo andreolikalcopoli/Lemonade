@@ -16,7 +16,7 @@
             android:name=".SellingActivity"
             android:exported="true" />
         <activity
-            android:name=".ImagesActivity"
+            android:name=".ProductsActivity"
             android:exported="true" />
         <activity
             android:name=".StartActivity"
@@ -37,7 +37,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ProductsActivity"
+            android:name=".ShoppingActivity"
             android:exported="true" />
         <activity
             android:name=".PremiumActivity"

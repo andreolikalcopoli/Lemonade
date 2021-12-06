@@ -5,14 +5,16 @@ import static com.magma.lemonade.db.DatabaseReader.readStand;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.magma.lemonade.db.DatabaseReader;
-import com.magma.lemonade.db.DatabaseWriter;
-import com.magma.lemonade.models.DateTime;
+import com.magma.lemonade.utils.DateTime;
+import com.magma.lemonade.models.Product;
 import com.magma.lemonade.models.Stand;
 import com.magma.lemonade.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class ProfitActivity extends AppCompatActivity {
@@ -37,8 +39,21 @@ public class ProfitActivity extends AppCompatActivity {
             @Override
             public void onCallback(Stand stand) {
                 if (stand != null) {
-                    double earned = stand.getSoldItems() * stand.getPortionPrice() + stand.getChange();
-                    double expenses = stand.getSoldItems() * stand.getPortionExpenses();
+                    ArrayList<Product> products = stand.getProducts();
+                    double earned = 0, expenses = 0;
+                    int soldItems = 0;
+                    StringBuilder stringBuilder = new StringBuilder();
+                    Log.d("PROFIT_ACTA", "Products : " + products.size());
+                    for (int i = 0; i < products.size(); i++) {
+                        Product product = products.get(i);
+                        earned += product.getSoldItems() * product.getPortionPrice() + product.getChange();
+                        expenses += product.getSoldItems() * product.getPortionExpenses();
+                        soldItems += product.getSoldItems();
+                        stringBuilder.append(product.getName() + " - " + product.getSoldItems() + " ");
+                    }
+
+                    Log.d("PROFIT_ACTA", "Earned : " + earned);
+
                     double profit = earned - expenses;
                     int dateDifference = new DateTime().getDateDifference(stand.getStartDate(), Locale.US);
                     dateDifference = Math.max(dateDifference, 1);
@@ -46,7 +61,7 @@ public class ProfitActivity extends AppCompatActivity {
                     double expensesPerDay = expenses / dateDifference;
 
                     tvIntro.setText("You've earned $" + String.format("%.2f", profit) + "!");
-                    tvSales.setText("You've sold " + stand.getSoldItems() + " and earned $" + String.format("%.2f", earned) + "!");
+                    tvSales.setText("You've sold " + soldItems + " items!" + "\n" + stringBuilder.toString());
                     tvExpenses.setText("The amount you invested in your business is $" + String.format("%.2f", expenses) + ".");
                     tvFinal.setText("Since your first income, made on " + stand.getStartDate() + ", you’ve earned $" + String.format("%.2f", earned) + ". That makes it $" + String.format("%.2f", earnedPerDay) + " per day. \n" +
                             "\n" +
@@ -66,6 +81,7 @@ public class ProfitActivity extends AppCompatActivity {
 
         databaseReader = new DatabaseReader();
         utils = new Utils(this);
+        utils.playAudio(R.raw.cashbox);
 
         displayData();
     }

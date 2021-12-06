@@ -7,6 +7,20 @@
     android:padding="@dimen/_12sdp"
     tools:context=".ProfitActivity">
 
+    <ScrollView
+        android:id="@+id/scrollProfit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/consScrollProfit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
     <TextView
         android:id="@+id/profitTitle"
         android:layout_width="wrap_content"
@@ -30,9 +44,9 @@
 
         <ImageView
             android:id="@+id/iconIntroProfit"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:src="@drawable/icelemon"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:src="@drawable/airplane"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -45,7 +59,7 @@
             android:textColor="@color/white"
             android:textStyle="normal"
             android:fontFamily="@font/futura"
-            android:text="Looks like you’re about to become successful businessman with lemonade!"
+            android:text="Looks like you're about to have a successful business with Lemonade!"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/iconIntroProfit"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -56,14 +70,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_18sdp"
             android:layout_marginTop="@dimen/_12sdp"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_18sdp"
             android:fontFamily="@font/boldfutura"
             android:text="You did not started the stand yet!"
-            app:layout_constraintTop_toBottomOf="@id/introText1"
-            app:layout_constraintStart_toEndOf="@id/iconIntroProfit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iconIntroProfit"
+            app:layout_constraintTop_toBottomOf="@id/introText1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -80,24 +94,24 @@
             android:id="@+id/salesTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_18sdp"
-            android:textColor="@color/black"
             android:fontFamily="@font/boldfutura"
             android:text="SALES"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/salesText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_15sdp"
-            android:fontFamily="@font/boldfutura"
             android:layout_marginTop="@dimen/_6sdp"
+            android:fontFamily="@font/boldfutura"
             android:text="You did not started the stand yet!"
-            app:layout_constraintTop_toBottomOf="@id/salesTitle"
+            android:textSize="@dimen/_13sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/salesTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -114,78 +128,80 @@
             android:id="@+id/expensesTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_18sdp"
-            android:textColor="@color/black"
             android:fontFamily="@font/boldfutura"
             android:text="EXPENSES"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/expensesText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_15sdp"
-            android:fontFamily="@font/boldfutura"
             android:layout_marginTop="@dimen/_6sdp"
+            android:fontFamily="@font/boldfutura"
             android:text="You did not started the stand yet!"
-            app:layout_constraintTop_toBottomOf="@id/expensesTitle"
+            android:textSize="@dimen/_13sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/expensesTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/finalCalc"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_18sdp"
-        android:padding="@dimen/_12sdp"
-        android:background="@drawable/blue_button"
-        app:layout_constraintTop_toBottomOf="@id/expenses"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/finalCalc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:background="@drawable/blue_button"
+                android:padding="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/expenses">
 
-        <TextView
-            android:id="@+id/finalTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/_18sdp"
-            android:fontFamily="@font/boldfutura"
-            android:textColor="@color/white"
-            android:layout_marginTop="@dimen/_6sdp"
-            android:text="FINAL CALCULATION"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+                <TextView
+                    android:id="@+id/finalTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:fontFamily="@font/boldfutura"
+                    android:text="FINAL CALCULATION"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/finalText"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:textSize="@dimen/_12sdp"
-            android:fontFamily="@font/futura"
-            android:textStyle="normal"
-            android:textColor="@color/white"
-            android:layout_marginTop="@dimen/_6sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:text="There's no activity..."
-            app:layout_constraintTop_toBottomOf="@id/finalTitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/imgFinal"
-            app:layout_constraintStart_toStartOf="parent"/>
+                <TextView
+                    android:id="@+id/finalText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:fontFamily="@font/futura"
+                    android:text="There's no activity..."
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/imgFinal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/finalTitle" />
 
-        <ImageView
-            android:id="@+id/imgFinal"
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/lucky"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+                <ImageView
+                    android:id="@+id/imgFinal"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_90sdp"
+                    android:src="@drawable/lucky"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/finalTitle" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

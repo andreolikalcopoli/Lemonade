@@ -6,24 +6,23 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.magma.lemonade.R;
-import com.magma.lemonade.models.Product;
+import com.magma.lemonade.models.Shopping;
 
 import java.util.ArrayList;
 
 public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.IngredientsAdapterHolder> {
     private Context context;
-    private ArrayList<Product> ingredients;
+    private ArrayList<Shopping> ingredients;
 
     private String tag = "INGREDIENT_ADAPTER";
 
-    public IngredientsAdapter(Context context, ArrayList<Product> ingredients) {
+    public IngredientsAdapter(Context context, ArrayList<Shopping> ingredients) {
         this.context = context;
         this.ingredients = ingredients;
     }
@@ -38,7 +37,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull final IngredientsAdapterHolder viewHolder, final int i) {
-        Product ingredient = ingredients.get(i);
+        Shopping ingredient = ingredients.get(i);
         viewHolder.bind(ingredient);
     }
 
@@ -57,9 +56,9 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
             tvPrice = (TextView) itemView.findViewById(R.id.ingredientPrice);
         }
 
-        void bind(Product product) {
-            tvName.setText(product.getName());
-            tvPrice.setText("$" + product.getPrice());
+        void bind(Shopping shopping) {
+            tvName.setText(shopping.getName());
+            tvPrice.setText("$" + shopping.getPrice());
         }
     }
 }

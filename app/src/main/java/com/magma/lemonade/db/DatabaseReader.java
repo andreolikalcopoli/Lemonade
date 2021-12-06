@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.magma.lemonade.models.Product;
+import com.magma.lemonade.models.Shopping;
 import com.magma.lemonade.models.Stand;
 import com.magma.lemonade.utils.PrefSingleton;
 
@@ -20,8 +21,8 @@ public class DatabaseReader {
     private PrefSingleton prefSingleton = PrefSingleton.getInstance();
 
     public static boolean readProducts = false;
-    public static boolean readImages = false;
     public static boolean readStand = false;
+    public static boolean readShoppings = false;
 
     private String tag = "DBASE_READER";
 
@@ -30,7 +31,7 @@ public class DatabaseReader {
     }
 
     public void getProducts(final ProductsCallback productsCallback) {
-        referenceOnMe().child("products").addValueEventListener(new ValueEventListener() {
+        referenceOnMe().child("stand").child("products").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (readProducts) {
@@ -57,6 +58,34 @@ public class DatabaseReader {
         void onCallback(ArrayList<Product> products);
     }
 
+    public void getShoppings(final ShoppingsCallback shoppingsCallback) {
+        referenceOnMe().child("shoppings").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (readShoppings) {
+                    readShoppings = false;
+                    ArrayList<Shopping> shoppings = new ArrayList<>();
+
+                    if (snapshot.exists()) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren())
+                            shoppings.add(dataSnapshot.getValue(Shopping.class));
+
+                        shoppingsCallback.onCallback(shoppings);
+                    } else shoppingsCallback.onCallback(new ArrayList<>());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d(tag, error.toString());
+            }
+        });
+    }
+
+    public interface ShoppingsCallback{
+        void onCallback(ArrayList<Shopping> shoppings);
+    }
+
     public void getStand(final StandCallback standCallback) {
         referenceOnMe().child("stand").addValueEventListener(new ValueEventListener() {
             @Override
@@ -77,28 +106,5 @@ public class DatabaseReader {
 
     public interface StandCallback{
         void onCallback(Stand stand);
-    }
-
-    public void getImagesNumber(final ImagesNumberCallback imagesNumberCallback) {
-        referenceOnMe().child("imagesNumber").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (readImages) {
-                    readImages = false;
-
-                    if (snapshot.exists()) imagesNumberCallback.onCallback(snapshot.getValue(Integer.class));
-                    else imagesNumberCallback.onCallback(0);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d(tag, error.toString());
-            }
-        });
-    }
-
-    public interface ImagesNumberCallback{
-        void onCallback(int imagesNumber);
     }
 }

@@ -6,31 +6,31 @@
     android:layout_height="match_parent"
     android:background="@color/primaryColor"
     android:padding="@dimen/_12sdp"
-    tools:context=".ProductsActivity">
+    tools:context=".ShoppingActivity">
 
     <TextView
-        android:id="@+id/productsTitle"
+        android:id="@+id/shoppingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/boldfutura"
-        android:text="PRODUCTS LIST"
+        android:text="SHOPPING LIST"
         android:textSize="@dimen/_20sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recProducts"
+        android:id="@+id/recShopping"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_16sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        app:layout_constraintBottom_toTopOf="@id/consButtonsImages"
+        android:layout_marginBottom="@dimen/_12sdp"
+        app:layout_constraintBottom_toTopOf="@id/consButtonsShopping"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/productsTitle" />
+        app:layout_constraintTop_toBottomOf="@id/shoppingTitle" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/consButtonsImages"
+        android:id="@+id/consButtonsShopping"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,30 +38,47 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <android.widget.Button
-            android:id="@+id/btShoppingList"
+            android:id="@+id/btProductsList"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_6sdp"
             android:background="@drawable/white_button"
             android:fontFamily="@font/boldfutura"
-            android:text="SHOPPING LIST"
+            android:text="PRODUCTS LIST"
             android:textColor="@color/secondaryColor"
             android:textSize="@dimen/_14sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btNewShopping"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.widget.Button
+            android:id="@+id/btNewShopping"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:background="@drawable/blue_button"
+            android:fontFamily="@font/boldfutura"
+            android:text="NEW ITEM"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btProductsList"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="@dimen/_60sdp"
-        android:layout_height="@dimen/_60sdp"
-        android:src="@drawable/splash"
-        android:layout_marginBottom="@dimen/_12sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/icelemon" />
+        android:id="@+id/imageView23"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:rotation="10"
+        android:layout_marginTop="@dimen/_minus6sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lucky" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
